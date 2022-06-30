@@ -1,0 +1,4 @@
+
+Microservices Architecture:
+    Gateway APIs : Entrypoint for client request and collecting data from one or more small Microservices.
+    
