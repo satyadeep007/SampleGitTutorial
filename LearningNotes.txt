@@ -1,4 +1,25 @@
 
 Microservices Architecture:
     Gateway APIs : Entrypoint for client request and collecting data from one or more small Microservices.
-    
+         Reverse Proxy of Gateway Routing: Internal routing gives a decoupling of internal services and client.
+         Request Aggregation: Multiple client requests to be aggregated
+         Azure API Management can be used to leverage Gateway APIs
+         Ocelot (.Net Core based API)
+
+    CQRS (Command And Query Responsibility )
+
+
+Smart Endpoints,& Dumb Pipes
+
+Communication Types:
+ 2 Axes:
+  Synchronous Protocol :  Http (it's a Synchronous Protocol based on request/response model)
+  Asyncnronous Protocol: other Protocols like AMQP, Messaging
+ 
+  Single Receiver : Command Pattern
+  Multiple Receivers: must always be Asyncnronous
+
+  Eventbus, AMQP, Http Polling are few asynchronous Protocol.
+
+  Integration Events 
+  
