@@ -23,3 +23,27 @@ Communication Types:
 
   Integration Events 
   
+
+  Microservices: 
+    Versioning Microservices APIs & Contracts
+    Microservices addressability & the service registry
+    Composite UI Micro FrontEnd (Instead of heavy Monolithic UI)
+    Security, 
+    Resiliency & High Availability
+    Health Management & Diagnostics
+        HealthChecks tools like ASPNetCore.Diagnostics.HealthChecks. Performs 2 types of HealthChecks   
+            Liveness: Check if Microservice is alive
+            Readiness: Check if Microservice's dependencies are ready themselves(Database, Queue Service)
+        
+        Diagnostics tools like Azure Monitor, Azure Diagnostics, Splunk
+    
+    Orchestrator(Clusters) managing health & Diagnostics information.
+        Lifecycle Management
+        Independent Scaling
+        Independent Updates
+        Always on Availability
+        Resource Efficient
+        Stateless/stateful
+
+    
+    
