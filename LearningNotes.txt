@@ -47,3 +47,50 @@ Communication Types:
 
     
     
+    SLA - Service Level Agreement
+     -  The uptime % of a cloud service
+     95
+     99
+     99.9
+     99.99
+     Always check the SLA of the service used
+
+     SLA calculation:
+      SLA of 1 service * SLA of 2nd Service (/100 percentage)
+
+
+    Read it: 
+     4 main services
+         Books Catalog
+         Shopping Cart 
+         Inventory Management
+         Order Engine 
+         
+
+    Azure Networking.
+        VNet
+        Resources in single VNet can communicate with each other by default
+        But cannot communicate with resources in other vnet by default
+    In AWS, VNET is called as VPC (virtual Private Cloud)
+    VNets are free, limit of 50 Vnets per subsription
+
+    Vnet is scoped to a single region
+    VNet is scoped to single subsription
+    VNet can be connected via Peering
+    Can be segmented using subnets (logical group of resources within a vnet)
+    Protected using NSG(on subnets)
+    Each VNet has it own range
+
+    CIDR notation
+        : Classless Inter-Domain Routing
+        Number between 0 and 32
+
+        0-256.0-256.0-256.0-256
+
+    Subnet:
+     A logical Segment of VNET
+     Shares a subset of VNETs IP range
+     Resources must be placed in subnet and not directly in Vnet
+     Resources can communicate with each other across subnets within same VNet
+     Network Interface or NIC(Virtual Network Card) connects the resource to VNet
+
