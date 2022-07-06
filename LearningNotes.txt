@@ -94,3 +94,73 @@ Communication Types:
      Resources can communicate with each other across subnets within same VNet
      Network Interface or NIC(Virtual Network Card) connects the resource to VNet
 
+NSG: Network Security Group
+    A gatekeeper for subnets
+    kind of a mini firewall
+
+    5 Tuples:
+        Source
+        Source Port 
+        Destination
+        Destination Port
+        Protocol
+
+    Based on above 5 tuples, a connection is allowed or denied
+    this is called Security rule
+    Each rule is assigned a Number
+    The lower the number, the higher the priority of the rule
+
+    Network Peering: 
+    Allow 2 Vnets to communicate each other
+    Not free
+
+    Secure VM access (all 4 will cost)
+        JIT access - requires Security centre license upgrade
+        VPN - a secure tunnel to VNet
+        Jump Box - Place another VM in vnet
+        Bastion -  web based connection to VM ()
+
+Service Endpoint:
+    Creates a route from VNet to the Managed Service
+    Enable Service Endpoint on the subnet from which we want to access the resource
+    free
+
+Private Link:
+    Extends the managed service into the VNet
+    not free
+
+
+Service Endpoint vs Private Link
+
+VNet Integration:
+ Allows access from appservice to resources within VNet
+ Support Same region Vnet.
+ For different region Vnet access a gateway will be required.
+
+ SE/PL vs VNetIntegration
+  SE/PL : allows connections from Vnet to managed service
+  Vnet Integration: allows connection from Managed service (app service) to Vnet resources
+
+Load Balancer:
+   Azure Service that distributes load and check health of VMs
+   When a VM is not healthy, no traffic is directed to it.
+   Works on Layer 4 (out of the 7 models OSI explained below)
+
+7 Layers Model (OSI model)
+  Physical
+  Data Link
+  Network
+  Transport - IP, Port, Protocol(TCP)
+  Session
+  Presentation
+  Application - 
+
+Load Balancr Distribution algorithm - 5 tuples
+same as that of NSG (source ip, source port, destination ip, destination port, protocol)
+
+Application Gateway - Next version of load balancer with more security (sort of web traffic load balancer)
+    can interact with the top layer (7th layer) i.e. application
+    WAF (Web Application firewall)
+
+Hub and Spoke Network Design
+Every Layer should reside in it's own vnet
