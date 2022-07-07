@@ -164,3 +164,48 @@ Application Gateway - Next version of load balancer with more security (sort of 
 
 Hub and Spoke Network Design
 Every Layer should reside in it's own vnet
+
+
+Azure SQL
+
+Cosmos DB:
+    No-sql, distributed
+
+    5 types of consistency Levels (commit in all replicas)
+        Strong - region X, region Y will always have same data(used for mission critical data)
+        Bounded Staleness - Region Y will lag behind region X by K versions or T time (max 2 versions)
+                            Keeps the order of versions
+                            used for low write latency when order is important
+        Session consistency: In a client session - strong consistency, other clients- consistent prefix
+        Consistent Prefix: Keeps the order of versions
+                           No guarantee of log size(as opposed to Bounded Staleness)
+                           Used for low write latency and when reads are infrequent
+
+        Eventual: No guarantee of log size, No order guarantee, used for count of Retweets,likes etc.
+
+    Cosmos DB consistency level can be 
+        Configured at account level
+        Can be relaxed on the request level
+        
+
+Azure Storage:
+    Redundancy (6 options)
+    LRS: Locally redundant (data is synchronously copied 3 times within same zone)
+    ZRS: Zone redundant(data is synchronously copied to 3 zones within same region)
+    GRS: Geo redundant (data is synchronously copied 3 times within same zone and then copied asynchronously to paired region). read access to secondary region in case of failover only
+    GZRS: Geo Zone redundant (data is synchronously copied to 3 zones within same region and then copied asynchronously to paired region)
+    RA-GRS: Read access Geo redudant (data is synchronously copied 3 times within same zone and then copied asynchronously to paired region) but with read acces in secondary region.
+    RA-GZRS Read acces Geo Zone redudant (similar to GZRS) but with read access is allowed to secondary region
+
+    failover can be initiated for azure storage via
+        cli
+        portal
+        power shell
+
+    3 tiers of blobs:
+        Hot - accessed frequently
+        Cool - accessed infrequently
+        Archive - Data for archival (does not support - ZRS, GRS, RA-GRS)
+
+
+
