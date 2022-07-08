@@ -207,5 +207,42 @@ Azure Storage:
         Cool - accessed infrequently
         Archive - Data for archival (does not support - ZRS, GRS, RA-GRS)
 
+Messaging in Azure: (4 fully maanaged Messaging services)
+ Service Bus
+ Storage Queue
+ Event Grid
+ Event Hub
+
+Storage Queue:
+     part of storage queue account
+     create queue ->Send Message -> Receive Message
+     Same for Availability
+    
+    Performance:
+        Requests (1 KB msg)
+        20K msgs/sec/account
+        2k msgs/sec/queue
+    Max msg size: 64 KB
+
+Event Grid 
+    Allow building event based Architecture
+    Publishes events to interested parties
+    No Queue/No order
+    Strong Integration with many Azure services
+    Cost effective - no tiers, High Availability built in
+    Max event size: 1 MB
+    Supports upto 10 million events/secondary
+    5000 events per sec per topic
+    Latency: Subsecond end to end latency in 99th percentile
+
+    Basic modules of event Grid
+     Event - what happened
+     Publisher - Who created event
+     Event Source - where event happened (Iot Hub, storage account, function app etc)
+     Topic - where event is send ( used to group related events / subscribers are listening to topic)
+     Subscription - Which Events interest me.
+     Event Handler - Where the event will be sent (Azure function, event hub etc.)
+    
+    
 
 
