@@ -243,6 +243,93 @@ Event Grid
      Subscription - Which Events interest me.
      Event Handler - Where the event will be sent (Azure function, event hub etc.)
     
+Service Bus:
+  Fully managed full blown Message queuing service
+  Durable
+  Supports point to point(queue) and pub/sub(Topic - not in basic tier)
+  Compatible with AMQP protocol, and with JMS 2.0 API(Premium only)
+
+  Some Advanced Features:
+    Message Session (guarantees FIFO)
+    Dead Letter Queue
+    Scheduled Delivery
+    Transactions
+    Duplicate Detection & few more
+
+Event Hubs:
+    Big Data streaming platform
+    Managed kafka implementation
+
+    Partition
+        - Single event stream
+        - can be treated as a single queue
+        - Guarantees order (in a single partition)
+        - Limited Availability
+        - Better to spread messages across partitions (but the order will be not Guaranteed then)
+        - Max 32 partition
     
+    Consumer Group
+        - logical group of Receivers, belong to the same application
+
+
+Azure AD (Active Directory)
+    - Central Identity and access management cloud service
+    - Secure, robust and intelligent access management service
+
+    Advanced Features
+        - MFA (multi factor authentication)
+        - Conditional access
+        - Device Management
+        - Hybrid Identity
+        - Identity Protection
+        - Monitoring & Reports
+
+    Tenant
+        - A specific instance of Azure AD containing accounts & groups
+        - called also Directory
+        - is not a part of Subscription hierarchy
+
+    MFA - 
+        Something you know (uname/pwd)
+        Something you have (phone/fingerprint)
+
+    Azure AD security defaults 
+        - increases protection of organization in free tier
+        - adds preconfigured security settings:
+            requiring all users to use MFA
+            Blocks legacy authentication
+    
+    RBAC
+        - role based access control
+
+        - USER 
+        - ROLE 
+        - Authorization
+
+    Managed Identities
+        - assign azure AD identity to azure resources
+        - resource can connect to other resources using managed Identities
+        - no need to handle credentials
+        - 2 types  
+            System assigned(deleted along with resource deletion)
+            user assigned
+
+OAuth & JWT
+    OAuth2
+        user - user who wants to access the protected API
+        client app -  client app accessing the api
+        authorization server - authorizes the user for client app 
+        Resource Server - The API being accessed
+    
+        Resource server must register with the authorization server 
+
+     JWT - JSON Web Token   
+
+Azure B2C - Azure Business to Consumer (identity as service for our application)
+    enables integrating identity services in our app
+    it allows working with various identity providers
+
+Syncing Azure AD with on Prem
+    - AD connect tool is used
 
 
