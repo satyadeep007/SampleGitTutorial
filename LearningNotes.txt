@@ -332,4 +332,86 @@ Azure B2C - Azure Business to Consumer (identity as service for our application)
 Syncing Azure AD with on Prem
     - AD connect tool is used
 
+Monitoring in azure
+    - has  a lot of built in Monitoring mechanisms
+    - centralized monitoring hub, where all monitoring data is streamed and can be used for triggers
+    
+    2 types of data
+        - Metrics(resource's aspect at a specific point in time)
+        - Logs(Events that occured in system)
+    Resource Monitoring
+        - Insights
+        - Alerts
+        - Metrics
+        - Logs
+        - Diagnostics settings
+        - Connection Monitor
+        - Workbooks
 
+    Log Analytics Workspace
+        - A central location for storing, organizing and analyzing Logs
+        - Aggregates logs from all connected, monitored resources
+        - located in a designated region (better be in same region of resources)
+        - uses specialized query language to query logs (Kusto)
+
+
+    Insights
+        - collection of metrics, statistics, and insights about the resource
+
+    Azure Monitor
+        - Central location for all the monitoring aspects of Azure's resources
+
+    Application Insights
+
+    Keyvault
+        - To store confidential data like  Connection string, keys, certificates, API keys etc. 
+        - 
+
+Disaster Recovery(DR)
+    - Select a DR site (secondary region)
+    - Configure it to be ready for activation
+
+    DR Concepts
+        - Hot/Cold 
+        - RPO/RTO (Recovery Point Objective/Recovery Time Objective) 
+            - RPO is time to backup data, RTO is time to make secondary data active
+
+    Routing in DR
+        - traffic manager
+        - front door
+
+        Traffic Manager Routing Algorith:
+            - priority
+            - weighted
+            - Performance
+            - Geographic
+            - Multivalue
+            - Subnet
+
+        Azure Front door
+            - Similar to that of Azure Gateway (but on a global level)
+
+Azure Policy
+    - enforce few rules while administering resources in azure account
+    - policies are applied to scope (subscription, resource group, specific resource)
+    - evaluated when a resource is created/updated/deleted in a scope
+
+    Concepts:
+        - Definition
+        - Initiative
+        - Assignment 
+        - Effect 
+
+Migrating to Cloud  
+    6 steps of migration
+        - Motivation Assessment
+        - System Assessment
+        - Migration
+        - Enhancements
+        - Testing
+        - Go Live
+
+    Migration Strategies
+        - Lift & Shift (cloud infrastructure ready)
+        - Refactoring  (cloud optimized)
+        - Rewrite   (cloud native)
