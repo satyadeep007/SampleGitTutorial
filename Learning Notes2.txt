@@ -1,0 +1,81 @@
+Docker is an open standard for packaging and distributing containerized applications. 
+
+
+Docker is an open platform to develop, ship and run containerized applications.
+Container Orchestrator 
+    Docker Swarm
+    Kubernetes
+    Mesos
+
+
+Kubernetes Architecture
+    1 or more Master Node
+    1 or more Worker Node
+    A distributed key-value store (like etcd)
+
+    Master Node is responsible for managing Kubernetes cluster. Entry point for all administrative tasks. 
+    we can communicate with Master Node via CLI, or GUI dashboard or via APIs.
+    For Fault tolerance purpose, there can be 1 or more master node in cluster.
+    Only 1 master node will be leader performing all operations, other will be followers.
+
+    To manage the cluster state, Kubernetes uses a distributed key-value store called etcd. 
+    Key value store can be part of master node or can be configured externally and master node will connect to it.
+
+Master Node Component:
+    API Server - All administrative tasks are performed via API server within master node. A user sends rest command to server,
+    and server validate and execute the requests and resulting state of the cluster is updated within distributed key-value store (etcd)
+    
+    Scheduler - schedules a  work to different worker node. the scheduler has resource usage information for each worker node
+    and it also knows abt the constraints that users or operators may have set.
+    Also takes into account the quality of service requirement, affinity, data locality, anti affinity.
+    and schedules the work in terms of pods & services
+
+    Controller Manager - Daemon that embeds core control loop. it watches the shared state of cluster through the api server 
+    and makes changes attempting the current state to desired state. Controller ex: replication controller, namespace controller,
+    endpoint controller, service controller.
+    node controller is responsible for noticing node going down and running. 
+    It regulates the state of Kubernetes cluster
+
+    distributed key-value store
+
+
+Worker Node:    a worker node is a machine (VM, or server etc.) which runs the applications using pods and
+is controlled by Master Node
+Pods is the scheduling unit in Kubernetes. it's a logical collection of one ore more container that are always
+scheduled together. and to access the applications from external world, user connect to worker node (and not master node)
+  Components    
+    Pods
+    Containers
+    Cubelet
+    Cube proxy
+    Container Runtime : ex-  Container D, RKT, LXD
+
+To run & manager container lifecycle, container runtime is required on worker node 
+
+Docker is a platform using Container D as standard container Runtime.
+
+Cubelet: A cubelet is an agent which runs on each worker node and communicates with Master node. 
+It receives the pod definition via various means (primarily through API server) 
+and runs the containers associated with Pod. makes sure that containers which are part of the pod are healthy at all times
+it also connects to Container Runtime using container runtime interface. The interface consist of protocol buffers, GRPC,
+APIs and other libraries. 
+Cubelet is a GRPC client connects to the CRI shim which is a GRPC server to perform container and image related operations.
+the container runtime interface impelements 2 service;
+    Image service -  for all image related service
+    Runtime service - for pod and container related operations
+
+Container Runtime used to be hardcoded in kuberenetes, but with development of Container Runtime interface,
+kuberenetes can now use difference container runtime without re-compiling the code.
+
+Any container runtime that impelements the interface can be used by Kubernetes to manage pods, containers 
+and container images
+
+
+Service in kuberenetes: instead of directly connecting to pods to access the applications, kuberenetes uses a logical
+construct called a "service" as a connection endpoints. "service" groups related pods together, and when that service is accessed
+it kind of load balances the pods that are behind it.
+
+
+ Cube Proxy: is the network proxy runs on each worker node. and listens to api server for each service endpoint creation
+ or deletion. For each service endpoint, cube proxy sets up the route 
+
